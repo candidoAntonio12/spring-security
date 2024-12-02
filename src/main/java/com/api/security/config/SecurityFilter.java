@@ -35,7 +35,7 @@ public class SecurityFilter {
 		
 		http.csrf(csrf ->csrf.disable())
 			.cors(t -> corsConfigurationSource())
-			.authorizeHttpRequests(t ->{ t.requestMatchers("/login").permitAll();
+			.authorizeHttpRequests(t ->{ t.requestMatchers("/login","/error").permitAll();
 										t.requestMatchers(HttpMethod.OPTIONS,"/**").permitAll();
 										t.anyRequest().authenticated();})
 			.httpBasic(Customizer.withDefaults());

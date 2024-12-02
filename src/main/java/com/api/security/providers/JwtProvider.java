@@ -5,7 +5,6 @@ package com.api.security.providers;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 public class JwtProvider {
 	
 	private Date expiresAt=new Date(System.currentTimeMillis()+3600*1000);
-	@Value("${my.secret.jwt}")
+
 	private String secret="${my.secret.jwt}";
 	private String issuer="candido@gmail.com";	
 
@@ -60,7 +59,7 @@ public class JwtProvider {
 	}
 	
 	public DecodedJWT verifier(String token) throws JWTVerificationException, IllegalArgumentException, UnsupportedEncodingException {
-		return JWT.require(Algorithm.HMAC512(token))
+		return JWT.require(Algorithm.HMAC512(secret))
 		.build()
 		.verify(token);		
 	}

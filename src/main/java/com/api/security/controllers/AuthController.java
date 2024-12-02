@@ -20,9 +20,10 @@ public class AuthController  {
 	
 	@PostMapping
 	public ResponseEntity<AuthDto> logar(@RequestBody LoginDto loginDto){
+		
 		String token=authService.login(loginDto);
 		AuthDto authDto=new AuthDto(token);
-	
+		
 		return ResponseEntity.ok(authDto);
 	} 
 	
