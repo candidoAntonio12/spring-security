@@ -5,10 +5,10 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.api.security.models.UsuarioModel;
+import com.api.security.models.UserModel;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<UsuarioModel, UUID>  {
-	UsuarioModel findByEmail(String email);
+public interface UsuarioRepository extends JpaRepository<UserModel, UUID>  {
+	UserModel findByEmail(String email);
 
 }

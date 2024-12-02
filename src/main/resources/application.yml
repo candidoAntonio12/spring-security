@@ -10,3 +10,15 @@ spring:
       ddl-auto: update
     show-sql: true
     open-in-view: false
+
+logging:
+  level:
+    org:
+     springframework:
+      security: debug
+       
+    
+ 
+my:
+ secret:
+  jwt: password

@@ -21,9 +21,9 @@ import lombok.Setter;
 @Entity
 @Component
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioModel implements UserDetails {
+@AllArgsConstructor
+public class UserModel implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -37,12 +37,44 @@ public class UsuarioModel implements UserDetails {
 	@Column(nullable = false)
 	private String username;
 	
+	public UserModel() {
+	}
+
+	public UserModel(UUID id, String email, String password, String username) {
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.username = username;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return List.of();
 	}
-
-
 
 	@Override
 	public String getPassword() {
@@ -53,5 +85,6 @@ public class UsuarioModel implements UserDetails {
 	public String getUsername() {
 		return this.email;
 	}
+	
 
 }
