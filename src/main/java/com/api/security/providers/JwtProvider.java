@@ -39,15 +39,7 @@ public class JwtProvider {
 	
 	
 	public boolean validateToken(String Token ) throws JWTVerificationException, IllegalArgumentException, UnsupportedEncodingException {
-	if (Token!=null) {
-		var verifier= verifier(Token);
-		if(!verifier.getExpiresAt().after(new Date())) {
-			return false;
-		}
-		if(!verifier.getIssuer().equals(issuer)) {
-			return false;
-		}
-	}
+		verifier(Token);
 		return true;
 	}
 	
